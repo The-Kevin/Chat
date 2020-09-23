@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+        :root{
+            --cor-primaria: #17141d;
+        }
+
+        body{
+            background: var(--cor-primaria);
+            color: white;
+
+            font-family: 'DM Sans', sans-serif;
+
+            display: flex;
+            justify-content: center;
+        }
+        ul{
+            height: 550px;
+        }
+        form{
+            align-self: flex-end;
+        }
+       textarea{
+           width: 50rem;
+       }
+    </style>
 </head>
 <body>
-    <h1>this is a test</h1>
+    <ul id="mensagens"></ul>
+    <form action="">
+        <textarea name="" id="" cols="30" rows="10"></textarea> 
+        <button>Enviar</button>
+    </form>
+
+    <!--  socket io  -->
+    <script src="../src/socket.io.js"></script>
+    <script>
+    var socket = io();
+    </script>
+
+
 </body>
 </html>
