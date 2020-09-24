@@ -6,38 +6,46 @@
     <title>chat</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
-
         :root{
             --cor-primaria: #17141d;
         }
-
         body{
             background: var(--cor-primaria);
-            color: white;
+            color: var(--cor-primaria);
 
             font-family: 'DM Sans', sans-serif;
 
-            display: flex;
-            justify-content: center;
+            margin: 0;
+            padding: 0;
         }
         ul{
-            height: 550px;
+            background: orange;
+            border: 1px solid black;
+            border-radius: 5px;
         }
         form{
-            align-self: flex-end;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
        textarea{
            width: 50rem;
+           border-radius: 20px;
        }
     </style>
 </head>
 <body>
-    <ul id="mensagens">
-    </ul>
-    <form action="">
-        <textarea name="" id="input" cols="30" rows="10"></textarea> 
-        <button>Enviar</button>
-    </form>
+    <div id="msg">
+        <ul id="mensagens">
+        </ul>
+    </div>
+   <center> <div id="formulario">
+        <form action="">
+            <textarea name="" id="input" cols="30" rows="10"></textarea> 
+            <button>Enviar</button>
+        </form>
+    </center> </div>
 
     <!--  socket io  -->
     <script src="socket.io/socket.io.js"></script>
