@@ -4,22 +4,32 @@ import * as SocketIO from 'socket.io';
 
 import routes  from './routes';
 
-class server {
+ class App {
 
     public app: express.Application;
     public server: Server;
     private io: SocketIO.Server;
     private port = process.env.PORT || 8080;
+
     
     constructor(){
-        this.expressServe();
+        //this.expressServe();
+        this.rotas();
         this.socketServe();
         this.socket();
-        this.rotas();
+        this.servicoHttp();
+    }
+
+    public servicoHttp(){
+        let http = createServer(this.app)
+        http.listen(this.port, () => {
+            console.log(`serviço http na porta ${this.port}`);
+        })
     }
 
     public rotas(){
-        this.app.use(routes)
+        this.app = express();
+        this.app.use(routes);
     }
 
     private socketServe(): void {
@@ -40,7 +50,7 @@ class server {
         }
     }
 
-    public expressServe(): void {
+   /* public expressServe(): void {
             //inicialização do express
         try{
             this.app = express()
@@ -49,7 +59,7 @@ class server {
         }catch(error){
             console.log('Não foi possivel conectar ao servidor Express', error)
         }
-    }
-}
+    }*/
 
-new server;
+}
+new App();
