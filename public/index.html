@@ -39,11 +39,11 @@
     </form>
 
     <!--  socket io  -->
-    <script src="../src/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-    var socket = io();
+    $(function(){
+        let socket = io();
+    })
     </script>
-
-
 </body>
 </html>
