@@ -32,16 +32,30 @@
     </style>
 </head>
 <body>
-    <ul id="mensagens"></ul>
+    <ul id="mensagens">
+    </ul>
     <form action="">
-        <textarea name="" id="" cols="30" rows="10"></textarea> 
+        <textarea name="" id="input" cols="30" rows="10"></textarea> 
         <button>Enviar</button>
     </form>
 
     <!--  socket io  -->
     <script src="socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-        let socket = io();
+        // codigo derivado da documentação!  | https://socket.io/get-started/chat/
+        $(() => {
+            let socket = io()
+            $('form').submit((env) => {
+                env.preventDefault();
+                socket.emit('chat message', $('#input').val());
+                $('#input').val('')
+                return false;
+            });
+            socket.on('chat message', (msg) => {
+                $('#mensagens').append($('<li>').text(msg));
+            })
+        });
     </script>
 </body>
 </html>
